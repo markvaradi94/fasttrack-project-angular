@@ -1,0 +1,15 @@
+<div class="container-fluid container-sm bg-light pt-5 my-4 border">
+  <h1 class="text-center font-weight-bold">GAME ENDED</h1>
+  <h3 class="pt-5 pl-5 font-weight-bold">FINAL RESULTS FOR {{player.username | uppercase}}: </h3>
+  <ul class="list-group list-group-horizontal pb-1 mx-5">
+    <li class="list-group-item d-flex flex-fill bg-dark text-white">{{player.username}}</li>
+    <li class="list-group-item bg-dark text-white">WINS: {{player.wins}}</li>
+    <li class="list-group-item bg-dark text-white">LOSSES: {{player.losses}}</li>
+    <li class="list-group-item bg-dark text-white">DRAWS: {{player.draws}}</li>
+  </ul>
+  <div class="d-flex justify-content-center pt-4 pb-3">
+    <div class="btn-group w-50">
+      <button type="button" class="btn btn-secondary mr-3" (click)="onStartNewGame()">START NEW GAME</button>
+    </div>
+  </div>
+</div>
