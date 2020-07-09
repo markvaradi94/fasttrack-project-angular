@@ -48,4 +48,8 @@ export class GameService {
   addPlayer2(gameUrl: string, username: string) {
     return this.http.put<Game>(this.GAME_API + '/' + gameUrl + '/player/2', username);
   }
+
+  reloadPage(location: Location) {
+    location.reload();
+  }
 }

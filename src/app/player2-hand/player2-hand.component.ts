@@ -43,8 +43,8 @@ export class Player2HandComponent implements OnInit {
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
       console.log(localStorage.getItem('game'));
+      this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
-    this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
   }
 
   onPaper() {
@@ -54,8 +54,8 @@ export class Player2HandComponent implements OnInit {
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
       console.log(localStorage.getItem('game'));
+      this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
-    this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
   }
 
   onScissors() {
@@ -65,9 +65,8 @@ export class Player2HandComponent implements OnInit {
     this.gameService.gameSubject.subscribe(result => {
       this.game = result as Game;
       localStorage.setItem('game', JSON.stringify(this.game));
+      this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
-    console.log(localStorage.getItem('game'));
-    this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
   }
 
 }

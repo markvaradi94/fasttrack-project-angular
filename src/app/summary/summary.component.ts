@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Game} from '../game/game.model';
 import {GameService} from '../game/game.service';
 import {PlayerService} from '../player/player.service';
@@ -9,16 +9,19 @@ import {Router} from '@angular/router';
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.css']
 })
+
+@Injectable()
 export class SummaryComponent implements OnInit {
   game: Game;
   summary: any;
+
 
   constructor(private gameService: GameService,
               private playerService: PlayerService,
               private router: Router) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.gameService.gameSubject.subscribe(result => {
       this.game = result as Game;
       localStorage.setItem('game', JSON.stringify(this.game));
@@ -30,6 +33,14 @@ export class SummaryComponent implements OnInit {
       localStorage.setItem('summary', JSON.stringify(this.summary));
     });
     console.log('init summary: ' + localStorage.getItem('summary'));
+
+    // const refresh = window.setInterval(() => {
+    //   window.location.reload();
+    // }, 12000);
+    // if (this.isValid()) {
+    //   window.clearInterval(refresh);
+    // }
+
   }
 
   onPlayer1History() {

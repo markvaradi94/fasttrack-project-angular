@@ -59,7 +59,9 @@ export class Player1HandComponent implements OnInit {
     });
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
+      this.setGame(result);
       console.log(localStorage.getItem('game'));
+      console.log(this.game);
       this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
   }
@@ -70,9 +72,11 @@ export class Player1HandComponent implements OnInit {
     });
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
+      this.setGame(result);
       console.log(localStorage.getItem('game'));
+      console.log(this.game);
+      this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
-    this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
   }
 
   onScissors() {
@@ -80,11 +84,13 @@ export class Player1HandComponent implements OnInit {
       this.gameService.gameSubject.next(data as Game);
     });
     this.gameService.gameSubject.subscribe(result => {
-      this.game = result as Game;
-      localStorage.setItem('game', JSON.stringify(this.game));
+      localStorage.setItem('game', JSON.stringify(result));
+      this.setGame(result);
+      console.log(localStorage.getItem('game'));
+      console.log(this.game);
+      this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
     console.log(localStorage.getItem('game'));
-    this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
   }
 
   copyGameUrl(customUrl) {

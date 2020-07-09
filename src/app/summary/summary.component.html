@@ -11,10 +11,13 @@
   </h4>
   <div class="d-flex justify-content-center">
     <div class="btn-group mb-1 pb-3 pt-3 w-75 mt-5">
-      <button *ngIf="validRestart()" type="button" class="btn btn-secondary mr-3" routerLink="/start">PLAY AGAIN</button>
+      <button *ngIf="validRestart()" type="button" class="btn btn-secondary mr-3" routerLink="/start">PLAY AGAIN
+      </button>
       <button type="button" class="btn btn-dark mr-3" (click)="onPlayer1History()">{{game.player1.username}} HISTORY
       </button>
-      <button *ngIf="isValid()" type="button" class="btn btn-dark" (click)="onPlayer2History()">{{game.player2.username}} HISTORY</button>
+      <button *ngIf="isValid()" type="button" class="btn btn-dark"
+              (click)="onPlayer2History()">{{game.player2.username}} HISTORY
+      </button>
     </div>
   </div>
 </div>
