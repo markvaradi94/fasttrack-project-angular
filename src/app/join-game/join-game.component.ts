@@ -28,39 +28,18 @@ export class JoinGameComponent implements OnInit {
       username: new FormControl(null, [Validators.required, Validators.minLength(4)])
     });
     this.url = localStorage.getItem('url');
-    console.log(this.url);
   }
 
   onAddPlayer2ToGame() {
-    // this.playerService.addPlayer(this.joinForm.value).subscribe(result => {
-    //   this.player = result;
-    //   this.game = JSON.parse(localStorage.getItem('game'));
-    //   this.game.player2 = this.player;
-    //   localStorage.setItem('game', JSON.stringify(this.game));
-    //   localStorage.setItem('player2', JSON.stringify(this.player));
-    // });
-
     this.gameService.addPlayer2(this.url, this.joinForm.value.username).subscribe(result => {
       this.game = result;
       this.player2 = result.player2;
-      console.log('player2: ' + JSON.stringify(this.player2));
       this.gameService.gameSubject.next(this.game);
-      // localStorage.setItem('game', JSON.stringify(this.game));
-      // localStorage.setItem('player2', JSON.stringify(this.player));
-      console.log('player 2 from service: ' + JSON.stringify(this.player2));
-      console.log('game from service: ' + this.game);
       this.onJoinGame();
-    });
-    // this.gameService.gameSubject.subscribe(result => {
-    //   localStorage.setItem('player2', JSON.stringify(result));
-    //   localStorage.setItem('url', result.gameUrl);
-    //   console.log('player2 from subject: ' + JSON.stringify(result));
-    // });
+    }, error => alert('Cannot create game with identical players'));
   }
 
   onJoinGame() {
-    console.log(this.player2);
-    console.log(this.game);
     localStorage.setItem('player2', JSON.stringify(this.player2));
     localStorage.setItem('url', this.game.gameUrl);
     localStorage.setItem('game', JSON.stringify(this.game));

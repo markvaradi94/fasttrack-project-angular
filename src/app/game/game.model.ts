@@ -7,6 +7,7 @@ export class Game {
   public gameUrl: string;
   public player1Hand: Hand;
   public player2Hand: Hand;
+  public gameStatus: string;
 
   public constructor(player1: Player, player2?: Player) {
     this.player1 = player1;

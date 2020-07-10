@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 export class SummaryComponent implements OnInit {
   game: Game;
   summary: any;
-
+  result: string;
 
   constructor(private gameService: GameService,
               private playerService: PlayerService,
@@ -27,20 +27,17 @@ export class SummaryComponent implements OnInit {
       localStorage.setItem('game', JSON.stringify(this.game));
     });
     this.game = JSON.parse(localStorage.getItem('game')) as Game;
-    console.log(this.game);
     this.gameService.getGameSummary(this.game.gameUrl).subscribe(result => {
       this.summary = result;
       localStorage.setItem('summary', JSON.stringify(this.summary));
     });
-    console.log('init summary: ' + localStorage.getItem('summary'));
 
-    // const refresh = window.setInterval(() => {
-    //   window.location.reload();
-    // }, 12000);
-    // if (this.isValid()) {
-    //   window.clearInterval(refresh);
-    // }
-
+    const refresh = window.setInterval(() => {
+      window.location.reload();
+    }, 5000);
+    if (this.isValid()) {
+      window.clearInterval(refresh);
+    }
   }
 
   onPlayer1History() {
@@ -52,10 +49,30 @@ export class SummaryComponent implements OnInit {
   }
 
   isValid() {
-    return this.game.player2.username !== 'Waiting for player to join';
+    return this.game.player2.username !== 'Waiting for player to join' && this.game.player2Hand !== 'NONE';
   }
 
   validRestart() {
     return this.isValid() && this.game.player1.username;
+  }
+
+  player1Wins() {
+    return this.game.gameStatus === 'PLAYER_1_WINS';
+  }
+
+  player1Loses() {
+    return this.game.gameStatus === 'PLAYER_2_WINS';
+  }
+
+  player2Wins() {
+    return this.game.gameStatus === 'PLAYER_2_WINS';
+  }
+
+  player2Loses() {
+    return this.game.gameStatus === 'PLAYER_1_WINS';
+  }
+
+  isDraw() {
+    return this.game.gameStatus === 'DRAW';
   }
 }

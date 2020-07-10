@@ -13,11 +13,11 @@ import {PlayerListComponent} from './player/player-list/player-list.component';
 import {GameService} from './game/game.service';
 import {GameListComponent} from './game/game-list/game-list.component';
 import {AppRoutingModule} from './app-routing.module';
-import { Player1HandComponent } from './player1-hand/player1-hand.component';
-import { SummaryComponent } from './summary/summary.component';
-import { JoinGameComponent } from './join-game/join-game.component';
-import { Player2HandComponent } from './player2-hand/player2-hand.component';
-import { HistoryComponent } from './history/history.component';
+import {Player1HandComponent} from './player1-hand/player1-hand.component';
+import {SummaryComponent} from './summary/summary.component';
+import {JoinGameComponent} from './join-game/join-game.component';
+import {Player2HandComponent} from './player2-hand/player2-hand.component';
+import {HistoryComponent} from './history/history.component';
 
 @NgModule({
   declarations: [

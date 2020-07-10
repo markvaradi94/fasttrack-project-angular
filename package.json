@@ -20,7 +20,13 @@
     "@angular/platform-browser-dynamic": "~9.1.11",
     "@angular/router": "~9.1.11",
     "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "jquery.js": "0.0.2-security",
+    "ng2-stomp-service": "^1.2.2",
     "rxjs": "~6.5.4",
+    "sockjs-client": "^1.4.0",
+    "socks": "^2.4.1",
+    "stompjs": "^2.3.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

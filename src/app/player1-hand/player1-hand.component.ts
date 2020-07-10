@@ -14,6 +14,7 @@ export class Player1HandComponent implements OnInit {
   game: Game;
   GAME_API: string;
   player1: Player;
+  urlCopied = false;
 
   constructor(private gameService: GameService,
               private route: ActivatedRoute,
@@ -23,34 +24,12 @@ export class Player1HandComponent implements OnInit {
   ngOnInit(): void {
     this.url = localStorage.getItem('url');
     this.GAME_API = 'localhost:4200/games/' + this.url;
-    // this.gameService.gameSubject.subscribe(result => {
-    //   localStorage.setItem('game', JSON.stringify(result));
-    // });
-    // this.game = JSON.parse(localStorage.getItem('game')) as Game;
-    // console.log(this.game);
     this.game = JSON.parse(localStorage.getItem('game')) as Game;
-    console.log(this.game);
     this.player1 = JSON.parse(localStorage.getItem('player1')) as Player;
-    console.log(this.player1);
-    // this.gameService.getGameByUrl(this.url).subscribe(data => {
-    //     this.setGame(data);
-    //     this.gameService.gameSubject.next(this.game);
-    //     localStorage.setItem('game', JSON.stringify(this.game));
-    //     console.log('game inside subscription: ' + localStorage.getItem('game'));
-    //   }
-    // );
-    // this.gameService.gameSubject.subscribe(result => {
-    //   this.game = result as Game;
-    // });
-    // console.log('outside subscription: ' + JSON.stringify(this.game));
   }
 
   setGame(game: Game) {
     this.game = game;
-  }
-
-  getGame() {
-    return this.game;
   }
 
   onRock() {
@@ -60,8 +39,6 @@ export class Player1HandComponent implements OnInit {
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
       this.setGame(result);
-      console.log(localStorage.getItem('game'));
-      console.log(this.game);
       this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
   }
@@ -73,8 +50,6 @@ export class Player1HandComponent implements OnInit {
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
       this.setGame(result);
-      console.log(localStorage.getItem('game'));
-      console.log(this.game);
       this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
   }
@@ -86,16 +61,14 @@ export class Player1HandComponent implements OnInit {
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
       this.setGame(result);
-      console.log(localStorage.getItem('game'));
-      console.log(this.game);
       this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
-    console.log(localStorage.getItem('game'));
   }
 
   copyGameUrl(customUrl) {
     customUrl.select();
     document.execCommand('copy');
     customUrl.setSelectionRange(0, 0);
+    this.urlCopied = true;
   }
 }

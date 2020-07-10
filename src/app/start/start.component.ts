@@ -51,12 +51,10 @@ export class StartComponent implements OnInit {
     );
     this.playerService.playerSubject.subscribe(result => {
       localStorage.setItem('player1', JSON.stringify(result));
-      console.log('player from subject: ' + JSON.stringify(result));
     });
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
       localStorage.setItem('url', result.gameUrl);
-      console.log('game from subject: ' + JSON.stringify(result));
     });
   }
 

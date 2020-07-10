@@ -21,19 +21,8 @@ export class Player2HandComponent implements OnInit {
 
   ngOnInit(): void {
     this.url = localStorage.getItem('url');
-    console.log(this.url);
     this.game = JSON.parse(localStorage.getItem('game')) as Game;
-    console.log(this.game);
     this.player2 = JSON.parse(localStorage.getItem('player2')) as Player;
-    console.log(this.player2.username);
-  }
-
-  setGame(game: Game) {
-    this.game = game;
-  }
-
-  getGame() {
-    return this.game;
   }
 
   onRock() {
@@ -42,7 +31,6 @@ export class Player2HandComponent implements OnInit {
     });
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
-      console.log(localStorage.getItem('game'));
       this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
   }
@@ -53,7 +41,6 @@ export class Player2HandComponent implements OnInit {
     });
     this.gameService.gameSubject.subscribe(result => {
       localStorage.setItem('game', JSON.stringify(result));
-      console.log(localStorage.getItem('game'));
       this.router.navigate(['/games/' + this.url + '/summary'], {relativeTo: this.route});
     });
   }
